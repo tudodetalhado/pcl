@@ -68,7 +68,7 @@ namespace pcl
        * \param[in] port UDP Port that should be used to listen for VLP packets
        */
       VLPGrabber (const boost::asio::ip::address& ipAddress,
-                  const unsigned short port);
+                  const uint16_t port);
 
       /** \brief virtual Destructor inherited from the Grabber interface. It never throws. */
       virtual
@@ -80,17 +80,17 @@ namespace pcl
       virtual std::string
       getName () const;
 
-      /** \brief Allows one to customize the colors used for each of the lasers.
-       */
+      /** \brief Allows one to customize the colors used for each of the lasers. */
       void
       setLaserColorRGB (const pcl::RGB& color,
-                        unsigned int laserNumber);
+                        uint8_t laserNumber);
 
     protected:
-      static const int VLP_MAX_NUM_LASERS = 16;
-      static const int VLP_DUAL_MODE = 0x39;
+      static const uint8_t VLP_MAX_NUM_LASERS = 16;
+      static const uint8_t VLP_DUAL_MODE = 0x39;
 
     private:
+      /** \brief Lookup table of Colors for coloring each of the lasers. */
       pcl::RGB laser_rgb_mapping_[VLP_MAX_NUM_LASERS];
 
       virtual void
